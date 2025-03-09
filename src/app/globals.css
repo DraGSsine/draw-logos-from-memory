@@ -70,7 +70,7 @@
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 4%;
 
-  --primary: 30 98% 50%; /* Orange color */
+  --primary: 30, 100%, 34%; /* Darker orange color for better contrast */
   --primary-lighter: 30 95% 60%;
   --primary-darker: 30 95% 40%;
   --primary-rgb: 255, 136, 0; /* For rgba usage */

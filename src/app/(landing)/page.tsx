@@ -10,16 +10,17 @@ import {
 } from "lucide-react";
 import { HowToPlayModal } from "@/components/HowToPlayModal";
 import { PopularChallenges } from "@/components/PopularChallenges";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
+  const router = useRouter()
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
   return (
     <>
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="max-w-3xl mx-auto text-center">
           <div>
-            <span className="badge bg-primary/10 text-primary mb-4 font-medium">
+            <span className="badge bg-primary/5 border-primary border text-primary mb-4 font-medium">
               Challenge Your Memory
             </span>
           </div>
@@ -35,15 +36,14 @@ const Home = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Link href="/game">
               <Button
+                onClick={()=>router.push("/game")}
                 size="lg"
                 className="w-full sm:w-auto shadow-soft hover:shadow-soft-lg transform transition-all hover:-translate-y-1"
               >
                 <Play size={18} className="mr-2" />
                 Start Challenge
               </Button>
-            </Link>
             <Button
               variant="outline"
               size="lg"
@@ -85,7 +85,7 @@ const Home = () => {
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <h2 className="text-xl font-semibold mb-2">{feature.title}</h2>
                 <p className="text-muted-foreground">{feature.description}</p>
               </div>
             ))}
