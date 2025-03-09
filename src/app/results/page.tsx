@@ -4,6 +4,8 @@ import { Button } from "@/components/Button";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+
+
 const Results = () => {
   const router = useRouter();
   const state = JSON.parse(localStorage.getItem("resultsState") || "");
