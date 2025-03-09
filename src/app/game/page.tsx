@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 const Game = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [color, setColor] = useState("#000000");
   const [brushSize, setBrushSize] = useState(5);
   const [tool, setTool] = useState<"brush" | "eraser">("brush");
@@ -51,9 +51,10 @@ const Game = () => {
       brandName: currentLogo.brandName,
       score,
       timeTaken,
-    }
-    localStorage.setItem("resultsState",JSON.stringify(res))
-    router.push("/results")
+    };
+    if (typeof window !== "undefined")
+      localStorage.setItem("resultsState", JSON.stringify(res));
+    router.push("/results");
   };
 
   // Capture the drawing for the results page
@@ -113,7 +114,7 @@ const Game = () => {
             onTimeUpdate={updateTimeLeft}
             initialTimeLeft={timeLeft}
           />
-          
+
           {/* Display current time left */}
           <div className="text-center text-sm text-muted-foreground">
             Time remaining: {timeLeft} seconds

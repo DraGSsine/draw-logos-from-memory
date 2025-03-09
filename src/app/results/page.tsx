@@ -4,11 +4,12 @@ import { Button } from "@/components/Button";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-
-
 const Results = () => {
   const router = useRouter();
-  const state = JSON.parse(localStorage.getItem("resultsState") || "");
+  let state = null;
+
+  if (typeof window !== "undefined")
+    state = JSON.parse(window.localStorage.getItem("resultsState") || "");
   if (!state) router.push("/game");
   if (!state) {
     return (
