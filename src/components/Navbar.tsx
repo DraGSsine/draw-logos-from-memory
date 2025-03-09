@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export const Navbar = () => {
@@ -7,9 +8,12 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-4">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-              LogoMem
-            </span>
+            <Image 
+            src={"/logo-nav.png"}
+            width={40}
+            height={50}
+            alt="website logo"
+            />
           </Link>
           
           <nav className="hidden md:flex items-center space-x-8">
