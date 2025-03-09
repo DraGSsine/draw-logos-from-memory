@@ -95,7 +95,7 @@ export const Canvas = ({
     try {
       context.putImageData(currentDrawing, 0, 0);
     } catch (e) {
-      console.log("Could not restore drawing after resize");
+      console.log("Could not restore drawing after resize",e);
     }
   }, [canvasSize]);
 
@@ -226,7 +226,6 @@ export const Canvas = ({
     if (historyStep <= 0 || !context || !canvasRef.current) return;
 
     const newStep = historyStep - 1;
-    const canvas = canvasRef.current;
 
     context.putImageData(history[newStep], 0, 0);
     setHistoryStep(newStep);
@@ -237,7 +236,6 @@ export const Canvas = ({
       return;
 
     const newStep = historyStep + 1;
-    const canvas = canvasRef.current;
 
     context.putImageData(history[newStep], 0, 0);
     setHistoryStep(newStep);

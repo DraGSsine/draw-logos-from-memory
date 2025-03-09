@@ -16,7 +16,6 @@ const Game = () => {
   const [tool, setTool] = useState<"brush" | "eraser">("brush");
   const [currentLogo, setCurrentLogo] = useState<Logo | null>(null);
   const [userDrawing, setUserDrawing] = useState<string>("");
-  const [userDrawLink,setUserDrawLink] = useState<string>("")
   const [timeLeft, setTimeLeft] = useState(60);
   const [gameStarted, setGameStarted] = useState(false);
 
@@ -47,7 +46,6 @@ const Game = () => {
 
     // Navigate to results page with score and drawings
     const res = {
-      userDrawLink,
       userDrawing,
       originalLogo: currentLogo.imageUrl,
       brandName: currentLogo.brandName,
@@ -69,6 +67,11 @@ const Game = () => {
       toast.success("Drawing submitted early!");
       handleGameComplete();
     }
+  };
+
+  // Function to update timeLeft from Timer component
+  const updateTimeLeft = (remainingTime: number) => {
+    setTimeLeft(remainingTime);
   };
 
   return (
@@ -107,8 +110,14 @@ const Game = () => {
             durationSeconds={60}
             onComplete={handleGameComplete}
             isActive={gameStarted}
+            onTimeUpdate={updateTimeLeft}
+            initialTimeLeft={timeLeft}
           />
           
+          {/* Display current time left */}
+          <div className="text-center text-sm text-muted-foreground">
+            Time remaining: {timeLeft} seconds
+          </div>
         </div>
       </div>
     </div>

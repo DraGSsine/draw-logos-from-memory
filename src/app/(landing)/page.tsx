@@ -5,7 +5,6 @@ import {
   Play,
   Info,
   Trophy,
-  ChevronRight,
   BarChart,
   PenTool,
 } from "lucide-react";
@@ -15,23 +14,6 @@ import Link from "next/link";
 
 const Home = () => {
   const [howToPlayOpen, setHowToPlayOpen] = useState(false);
-
-  // These variants control the animations for staggered children
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
     <>
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

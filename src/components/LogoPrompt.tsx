@@ -1,6 +1,4 @@
 
-import { cn } from "@/lib/utils";
-
 interface LogoPromptProps {
   brandName: string;
   brandColor: string;

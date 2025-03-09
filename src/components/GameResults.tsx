@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./Button";
-import { Download, Home, Play } from "lucide-react";
+import { Download, Play } from "lucide-react";
+import Image from "next/image";
 
 interface GameResultsProps {
   userDrawing: string;
@@ -65,21 +66,23 @@ export const GameResults = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="flex flex-col gap-2 items-center">
           <h3 className="text-lg font-medium">Your Drawing</h3>
-          <div className="bg-white rounded-lg overflow-hidden border border-border w-full aspect-square">
-            <img
+            <div className="bg-white rounded-lg overflow-hidden border border-border w-full aspect-square relative">
+            <Image
               src={userDrawing}
               alt="Your drawing"
-              className="w-full h-full object-contain p-2"
+              className="object-contain p-2"
+              fill
             />
-          </div>
+            </div>
         </div>
         <div className="flex flex-col gap-2 items-center">
           <h3 className="text-lg font-medium">Original Logo</h3>
           <div className="bg-white rounded-lg overflow-hidden border border-border w-full aspect-square">
-            <img
+            <Image
               src={originalLogo}
               alt="Original logo"
               className="w-full h-full object-contain p-2"
+              fill
             />
           </div>
         </div>

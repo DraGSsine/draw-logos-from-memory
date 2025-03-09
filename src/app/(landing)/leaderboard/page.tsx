@@ -30,7 +30,7 @@ const page = () => {
         </h1>
 
         <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-          We're working hard to track the best logo artists! Soon you'll be able
+          We&apos;re working hard to track the best logo artists! Soon you&apos;ll be able
           to compete with players worldwide and see who has the sharpest memory
           for brand identities.
         </p>

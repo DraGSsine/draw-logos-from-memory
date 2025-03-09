@@ -1,17 +1,31 @@
-
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Timer as TimerIcon, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 
 interface TimerProps {
   durationSeconds: number;
   onComplete: () => void;
   isActive?: boolean;
+  onTimeUpdate?: (timeLeft: number) => void;
+  initialTimeLeft?: number;
 }
 
-export const Timer = ({ durationSeconds, onComplete, isActive = true }: TimerProps) => {
-  const [timeLeft, setTimeLeft] = useState(durationSeconds);
+export const Timer = ({ 
+  durationSeconds, 
+  onComplete, 
+  isActive = true,
+  onTimeUpdate,
+  initialTimeLeft 
+}: TimerProps) => {
+  const [timeLeft, setTimeLeft] = useState(initialTimeLeft || durationSeconds);
   const [isPulsing, setIsPulsing] = useState(false);
+  
+  // Reset timer if initialTimeLeft changes externally
+  useEffect(() => {
+    if (initialTimeLeft !== undefined) {
+      setTimeLeft(initialTimeLeft);
+    }
+  }, [initialTimeLeft]);
   
   useEffect(() => {
     if (!isActive) return;
@@ -29,12 +43,19 @@ export const Timer = ({ durationSeconds, onComplete, isActive = true }: TimerPro
           setIsPulsing(true);
         }
         
-        return prev - 1;
+        const newTime = prev - 1;
+        
+        // Notify parent component of time change
+        if (onTimeUpdate) {
+          onTimeUpdate(newTime);
+        }
+        
+        return newTime;
       });
     }, 1000);
     
     return () => clearInterval(interval);
-  }, [durationSeconds, onComplete, isActive]);
+  }, [durationSeconds, onComplete, isActive, onTimeUpdate, isPulsing]);
   
   // Format time as mm:ss
   const formatTime = (seconds: number) => {
