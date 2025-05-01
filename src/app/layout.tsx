@@ -55,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="yandex-verification" content="e358148bce102cdc" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Your Name" />
         <link rel="icon" href="/logo.png" />
